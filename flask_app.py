@@ -9,3 +9,4 @@ app = Flask(__name__)
 def hello_world():
     return 'Hello from Flask!'
 
+# Ceci est un commentaire pour la fin de mon fichier flask_app.py dans la branch dev
