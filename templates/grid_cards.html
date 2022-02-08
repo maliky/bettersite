@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>Exemple de cartes en grille</title>
+</head>
+<body>
+    <section id="nos-cartes">
+    {% card in cards %}
+    <div id="{{card.id}}" class="carte">
+        <h2 class="carte-titre">{{card.title}}</h2>
+        <img class="carte-image" src="{{card.img}" alt="{{img.title}}">
+        <p class="carte-contenu">{{card.content}}</p>
+    </div>
+    {% endfor %}
+    </section>
+</body>

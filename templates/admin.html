@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="fr">
+   <head>
+       <meta charset="utf-8">
+      <title>admin</title>
+   </head>
+   <body>
+      <h1>
+         Page d'administration
+      </h1>
+      <form action="mkone.pythonanywhere.com/admin", method="post">
+         <fieldset id="clef">
+            <label for="key">Clef</label>
+            <input name="clef">
+         </fieldset>
+         <fieldset id="client">
+            <label for="nom">Nom</label>
+            <input name="nom">
+            <label for="mtp">Mot de passe :</label>
+            <input name="mtp" type="password">
+            <input type="submit" value="Ajouter">
+         </fieldset>
+      </form>
+   </body>
+</html>
+

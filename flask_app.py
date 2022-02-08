@@ -1,12 +1,21 @@
+# après avoir copié le dossier
+# cp -r mystite bettersite
+#
+# modifier les chemins dans la partie web de pythonanywhere.com
+# il faut remplacer /home/user/site par /home/user/bettersite
+#
+# ouvrir /home/user/bettersite/flask_app.py et y recopier le code minimaliste
+# ci-dessous pour verifier que tout fonctionne bien.
 
-# A very simple Flask Hello World app for you to get started with...
-
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
+@app.route('/admin', methods=['GET', 'POST'])
+def admin():
+    return render_template('admin.html')
+
 @app.route('/')
 def hello_world():
-    return 'Hello from Flask!'
+    return "hello from better site"
 
-# Ceci est un commentaire pour la fin de mon fichier flask_app.py dans la branch dev
