@@ -7,7 +7,12 @@ app = Flask(__name__)
 
 @app.route('/admin', methods=['GET', 'POST'])
 def admin():
-    return render_template('admin.html')
+    clients = [
+        {"nom":"Areta F.", "mtp": "ABC"},
+        {"nom":"Ernesto Djé djé", "mtp": "1XB"},
+        {"nom":"Eminem", "mtp": "123"},
+        ]
+    return render_template('admin.html', clients = clients)
 
 @app.route('/')
 def hello_world():
