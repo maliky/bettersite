@@ -1,0 +1,30 @@
+<!doctype html>
+<!-- fichier dans bettersite/templates/admin.html  -->
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Admin</title>
+</head>
+
+<body>
+    <section id="contenu">
+        <h1>Page d'administration</h1>
+        <!-- le formulaire -->
+        <form method="post" action="admin">
+
+            <fieldset id="fd-clef">
+                <label for='clef'>Clef maîtresse</label> <input name='clef'>
+            </fieldset>
+
+            <fieldset id="fd-client">
+                <label for='client'>Nom du client</label><input name='client'>
+                <label for='mtp'>Mot de passe</label><input type='password' name='mtp'>
+            </fieldset>
+
+            <input type="submit" value="Ajouter">
+        </form>
+    </section>
+</body>
+
+</html>
