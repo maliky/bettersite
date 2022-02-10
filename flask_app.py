@@ -1,12 +1,4 @@
-# après avoir copié le dossier
-# cp -r mystite bettersite
-#
-# modifier les chemins dans la partie web de pythonanywhere.com
-# il faut remplacer /home/user/site par /home/user/bettersite
-#
-# ouvrir /home/user/bettersite/flask_app.py et y recopier le code minimaliste
-# ci-dessous pour verifier que tout fonctionne bien.
-
+# -*- coding: utf-8 -*-
 from flask import Flask, render_template
 
 app = Flask(__name__)
