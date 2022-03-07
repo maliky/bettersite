@@ -62,7 +62,7 @@ def charge_fichier_mtp(nom_fichier: str):
             ### ... on récupère le nom et le mtp_chiffré
             dico_chiffre = {
                 "nom": ligne.split("\t")[0],
-                "mtp": ligne.split("\t")[1][:-1],
+                "mtp": ligne.split("\t")[1][:-1].encode(),  # le [:-1] enlève le \n.
             }
             liste_dico.append(dico_chiffre)
             ligne = f.readline()  # ligne suivante
