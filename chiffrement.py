@@ -103,14 +103,14 @@ def crypte_mtp(dico: dict, key):
     return dico_chiffre
 
 
-def est_dans_db(client, key):
+def est_dans_db(client, nom_fichier, key):
     """
     Vérifie que le nom et le mot de passe sont bien
     stoqué dans notre fichier de mot de passe
     renvoie Vrai si c'est le cas.
     """
     # charge le fichier de clients
-    clients_db = charge_fichier_mtp("mots_de_passe.tsv")
+    clients_db = charge_fichier_mtp(nom_fichier)
 
     # on récupère le client dans le fichier (notre database : db)
     client_db = recupe_info(client["nom"], clients_db)
