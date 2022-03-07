@@ -10,8 +10,8 @@ def décrypte_client(client: dict, key):
     """
     fernet = Fernet(key)
     mtp_crypté = client["mtp"]
-    decrypte_mtp = fernet.decrypt(mtp_crypté.encode())
-    client_decrypte = {"nom": client["nom"], "mtp": decrypte_mtp}
+    decrypte_mtp = fernet.decrypt(mtp_crypté)
+    client_decrypte = {"nom": client["nom"], "mtp": decrypte_mtp.decode()}
 
     return client_decrypte
 
@@ -118,7 +118,7 @@ def est_dans_db(client, key):
     ### on fait les tests
     if client_db:
         mtp_db_dechiffre = décrypte_client(client_db, key)["mtp"]
-        if mtp_db_dechiffre.decode() == client["mtp"]:
+        if mtp_db_dechiffre == client["mtp"]:
             return True
 
     return False
