@@ -11,3 +11,7 @@ def admin():
 def hello_world():
     return "hello from better site"
 
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
