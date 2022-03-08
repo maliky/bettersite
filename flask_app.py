@@ -18,3 +18,8 @@ def hello_world():
     return 'Hello from  bettersite!'
 
 # Ceci est un commentaire pour la fin de mon fichier flask_app.py dans la branch dev
+
+
+
+if __name__ == "__main__":
+    app.run(debug=True
