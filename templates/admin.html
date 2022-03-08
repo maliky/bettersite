@@ -1,0 +1,50 @@
+<!doctype html>
+<!-- fichier dans bettersite/templates/admin.html  -->
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Admin</title>
+</head>
+
+<body>
+    <section id="contenu">
+        <h1>Page d'administration</h1>
+        <!-- le formulaire -->
+        <form method="post" action="admin">
+
+            <fieldset id="fd-clef">
+                <label for='clef'>Clef maîtresse</label> <input name='clef'>
+            </fieldset>
+
+    {% if clients %}
+    <!-- on crée un tableau que si la variables clients n'est pas vide -->
+
+    <table>
+        <thead>
+            <tr><th>Nom du client</th><th>Mot de passe chiffré</th></tr>
+        </thead>
+        <tbody>
+            <!-- pour chaque client de clients on veut afficher une ligne -->
+            {% for client in clients %}
+
+            <tr><td>{{client.nom}}</td><td>{{client.mtp}}</td></tr>
+
+            {% endfor %}
+
+        </tbody>
+    </table>
+
+    {% endif %}
+
+            <fieldset id="fd-client">
+                <label for='client'>Nom du client</label><input name='client'>
+                <label for='mtp'>Mot de passe</label><input type='password' name='mtp'>
+            </fieldset>
+
+            <input type="submit" value="Ajouter">
+        </form>
+    </section>
+</body>
+
+</html>
