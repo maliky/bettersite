@@ -2,11 +2,17 @@
 
 from flask import Flask, render_template
 from chiffrement import charge_fichier_mtp
+import os
+
 app = Flask(__name__)
 
 @app.route('/admin', methods=['GET', 'POST'])
 def admin():
-    clients = charge_fichier_mtp("bd.test.tsv")
+    nom_bd = "bd.test.tsv"
+    if os.path.exists(nom_bd):
+        clients = charge_fichier_mtp(nom_bd)
+    else:
+        clients = []
     return render_template('admin.html', clients = clients)
 
 @app.route('/')
