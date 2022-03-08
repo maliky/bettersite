@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 from cryptography.fernet import Fernet
 
 # KEY = 'lRAufiLOsaycti5e2XHecZeqEj00H6kcCm_yQdqcSH4='
@@ -10,7 +11,7 @@ def décrypte_client(client: dict, key):
     """
     fernet = Fernet(key)
     mtp_crypté = client["mtp"]
-    decrypte_mtp = fernet.decrypt(mtp_crypté.encode())
+    decrypte_mtp = fernet.decrypt(mtp_crypté)
     client_decrypte = {"nom": client["nom"], "mtp": decrypte_mtp}
 
     return client_decrypte
@@ -62,7 +63,7 @@ def charge_fichier_mtp(nom_fichier: str):
             ### ... on récupère le nom et le mtp_chiffré
             dico_chiffre = {
                 "nom": ligne.split("\t")[0],
-                "mtp": ligne.split("\t")[1][:-1],
+                "mtp": ligne.split("\t")[1][:-1].encode(),
             }
             liste_dico.append(dico_chiffre)
             ligne = f.readline()  # ligne suivante
@@ -103,14 +104,14 @@ def crypte_mtp(dico: dict, key):
     return dico_chiffre
 
 
-def est_dans_db(client, key):
+def est_dans_db(client, nom_fichier, key):
     """
     Vérifie que le nom et le mot de passe sont bien
     stoqué dans notre fichier de mot de passe
     renvoie Vrai si c'est le cas.
     """
     # charge le fichier de clients
-    clients_db = charge_fichier_mtp("mots_de_passe.tsv")
+    clients_db = charge_fichier_mtp(nom_fichier)
 
     # on récupère le client dans le fichier (notre database : db)
     client_db = recupe_info(client["nom"], clients_db)
