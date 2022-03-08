@@ -1,16 +1,12 @@
 # A very simple Flask Hello World app for you to get started with...
 
 from flask import Flask, render_template
-
+from chiffrement import charge_fichier_mtp
 app = Flask(__name__)
 
 @app.route('/admin', methods=['GET', 'POST'])
 def admin():
-    clients = [
-        {"nom":"Areta F.", "mtp": "ABC"},
-        {"nom":"Ernesto Djé djé", "mtp": "1XB"},
-        {"nom":"Eminem", "mtp": "123"},
-        ]
+    clients = charge_fichier_mtp("bd.test.tsv")
     return render_template('admin.html', clients = clients)
 
 @app.route('/')
