@@ -1,7 +1,7 @@
 # A very simple Flask Hello World app for you to get started with...
 
 from flask import Flask, render_template, request
-from chiffrement import charge_fichier_mtp, est_dans_db, crypte_mtp
+from chiffrement import charge_fichier_mtp, est_dans_db, crypte_mtp, sauvegarde_mtp
 import os
 
 app = Flask(__name__)
@@ -20,12 +20,14 @@ def admin():
         nom = request.form["client"]
         mtp = request.form["mtp"]
         nv_client = {"nom": nom, "mtp": mtp}
-        
-        if not est_dans_db(nv_client, nom_fichier=NOM_BD, key=MASTER_KEY):
+
+        clef = request.form["clef"]
+        if not est_dans_db(nv_client, nom_fichier=NOM_BD, key=clef):
             # ajouter un client
 
-            nv_client_chiffre = crypte_mtp(nv_client, key=MASTER_KEY)
+            nv_client_chiffre = crypte_mtp(nv_client, key=clef)
             clients.append(nv_client_chiffre)
+            sauvegarde_mtp(clients, nom_fichier=NOM_BD)
 
             return render_template("admin.html", clients=clients)
 
@@ -42,12 +44,14 @@ def login():
     # vérifie les données saisie
     nom = request.form["client"]
     mtp = request.form["mtp"]
-    clients = charge_fichier_mtp(NOM_BD)
+    nv_client = {"nom": nom, "mtp": mtp}
 
-    if est_dans_db(nom, nom_fichier=NOM_BD, key=MASTER_KEY):
+    if est_dans_db(nv_client, nom_fichier=NOM_BD, key=MASTER_KEY):
         return render_template("produits.html")
 
-    return render_template("login.html", message="utilisateur ou mot de passe inconnu.")
+    return render_template(
+        "login.html", message="Utilisateur ou mot de passe inconnu, réessayer !"
+    )
 
 
 # Ceci est un commentaire pour la fin de mon fichier flask_app.py dans la branch dev

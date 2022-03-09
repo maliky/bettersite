@@ -11,13 +11,15 @@
     <section id="login">
       <div>
         <h1>Login</h1>
-        <form method="post" action="login">
+        <form method="post" action="">
           <fieldset id="fd-client">
-            <label for='login'>Login</label><input name='login'>
+            <label for='client'>Login</label><input name='client'>
             <label for='mtp'>Mot de passe</label><input type='password' name='mtp'>
+            <div id="message">{{message}}</div>
           </fieldset>
+          <input type="submit" value="Se connecter">
 
-          <input type="submit" value="Ajouter">
+
         </form>
       </div>
     </section>
