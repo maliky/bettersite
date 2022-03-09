@@ -8,11 +8,27 @@
       <h1>
          Page d'administration
       </h1>
-      <form action="mkone.pythonanywhere.com/admin", method="post">
+      <form action="mkone.pythonanywhere.com/admin" method="post">
          <fieldset id="clef">
             <label for="key">Clef</label>
             <input name="clef">
          </fieldset>
+         {% if clients %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nom</th><th>Mot de passe</th>
+                    </tr>
+                </thead>
+                <tbody>
+                 {% for client in clients %}
+                    <tr>
+                        <td>{{client.nom}}</td><td>{{client.mtp}}</td>
+                    </tr>
+                 {% endfor %}
+                </tbody>
+            </table>
+         {% endif %}
          <fieldset id="client">
             <label for="nom">Nom</label>
             <input name="nom">
