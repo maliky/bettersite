@@ -13,12 +13,12 @@
       <h1>Nos FreeLance Ivoires</h1>
       <div  class="cartes">
         {% for fr in freelances %}
-        <div id="fr-{{fr.id}}" class="carte">
-          <div  class="fr-entete">{{fr.nom}}</div>
+        <div id="fr-{{fr.id}}" class="carte" onclick=test()>
+          <div class="fr-nom">{{fr.nom}}</div>
           <img class="fr-img" src="https://avatars2.githubusercontent.com/u/{{fr.id}}?s=360" alt="Image de {{fr.nom}}"/>
-          <div class="fr-descr">{{fr.description}}</div>
+          <div class="fr-desc">"{{fr.description}}"</div>
           <div class="fr-prix">{{fr.prix}} USD/h</div>
-          <div id="sel-{{fr.id}}" class="selection"></div>
+          <div id="fr-sel-{{fr.id}}" class="selection"></div>
         </div>
         {% endfor %}
       </div>
@@ -28,5 +28,5 @@
       <button>Commander</button>
     </section>
   </body>
-
+<script src="static/freelances.js"></script>
 </html>

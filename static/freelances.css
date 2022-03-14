@@ -6,30 +6,81 @@ body {
     grid-gap:10px
              
 }
-.carte{
-    border: darkgray solid 2px;
-margin: 10px;
-padding: 10px;
-margin-top: 10px;
-    border-radius: 10px;
-    box-shadow: 5px 5px 10px grey;
+h1 {
+    text-align: center;
 }
 .cartes {
     background:lightblue;
     grid-area: main;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     display:grid;
+    grid-gap: 5px;
 }
 
+.carte{
+    background-color:lightgrey;
+    border: darkgray solid 2px;
+    margin: 10px;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px grey;
+    grid-template-columns: 1fr minmax(50px,1fr);
+    display:grid;
+    grid-template-areas:
+        "nom img"
+        "desc desc"
+        "prix selected";
+    grid-gap:2px;
+}
+/*
+.carte > div{
+    border: black 1px solid;
+}*/
 #panier {
     grid-area:sidebar;
     background:coral;          
 }
+.fr-nom{
+    grid-area:nom;
+    height:1em;
+    text-align: center;
+    font-family: "ubuntu", sans-serif;
+    font-size:1.2em;
+    font-weight: bold;
+    margin:5px 5px 5px 5px;
+}
 
 .fr-img{
+    grid-area:img;
     width:80%;
-   border-radius:50%;
-    border: gold 5px solid;}
+    border-radius:50%;
+    border: gold 5px solid;
+}
+.fr-desc{
+    grid-area:desc;
+}
+.fr-prix{
+    font-family: 'arial';
+    grid-area:prix;
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
