@@ -2,37 +2,37 @@
   {
     "id": 143,
     "nom": "Astral",
-    "description": "elle brille",
+    "description": "C'est le meilleur",
     "prix": 34
   },
   {
     "id": 423,
     "nom": "Benelox",
-    "description": "elle est généreuse",
+    "description": "Ne vous fiez pas au apparence, c'est un maître du codage",
     "prix": 1
   },
   {
     "id": 5435,
     "nom": "Cigaroux",
-    "description": "il se consume",
+    "description": "Efficace !",
     "prix": 5
   },
   {
     "id": 241,
     "nom": "Deltoïd",
-    "description": "C'est le socle",
+    "description": "Le socle !",
     "prix": 6
   },
   {
     "id": 634,
     "nom": "Exclamation",
-    "description": "Allélouïa ! Alhamdoulila",
+    "description": "Flexible, tout terrain, rapide comme l'éclaire et pas cher",
     "prix": 324
   },
   {
     "id": 91243,
     "nom": "Filius",
-    "description": "de génération en génération",
+    "description": "Tradition de la perfection",
     "prix": 93
   }
 ]
