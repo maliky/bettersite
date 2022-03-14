@@ -3,6 +3,7 @@
 from flask import Flask, render_template, request
 from chiffrement import charge_fichier_mtp, est_dans_db, crypte_mtp, sauvegarde_mtp
 from chiffrement import KEY as MASTER_KEY
+from json import load
 import os
 
 app = Flask(__name__)
@@ -53,7 +54,6 @@ def login():
             "login.html", message=f"Utilisateur {nom} ou mot de passe {mtp}, réessayer !"
         )
 
-    from json import load
 
     with open("static/produits.json", mode="r") as f:
         produits = load(f)
