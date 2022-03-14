@@ -16,22 +16,22 @@ def admin():
     else:
         clients = []
 
+    # Si c'est POST
     if request.method == "POST":
         nom = request.form["client"]
         mtp = request.form["mtp"]
         nv_client = {"nom": nom, "mtp": mtp}
 
         clef = request.form["clef"]
-        if not est_dans_db(nv_client, nom_fichier=NOM_BD, key=clef):
+        if est_dans_db(nv_client, nom_fichier=NOM_BD, key=clef):
+            pass
+        else:
             # ajouter un client
-
             nv_client_chiffre = crypte_mtp(nv_client, key=clef)
             clients.append(nv_client_chiffre)
             sauvegarde_mtp(clients, nom_fichier=NOM_BD)
 
-            return render_template("admin.html", clients=clients)
-
-    # si c'est GET
+    # Dans tout les cas
     return render_template("admin.html", clients=clients)
 
 
@@ -46,15 +46,31 @@ def login():
     mtp = request.form["mtp"]
     nv_client = {"nom": nom, "mtp": mtp}
 
-    if est_dans_db(nv_client, nom_fichier=NOM_BD, key=MASTER_KEY):
-        return render_template("produits.html")
+    if  est_dans_db(nv_client, nom_fichier=NOM_BD, key=MASTER_KEY):
+        pass
+    else:
+        return render_template(
+            "login.html", message=f"Utilisateur {nom} ou mot de passe {mtp}, réessayer !"
+        )
+
+    from json import load
+
+    with open("static/produits.json", mode="r") as f:
+        produits = load(f)
 
     return render_template(
-        "login.html", message="Utilisateur ou mot de passe inconnu, réessayer !"
+        "produits.html",
+        produits=produits,
     )
 
 
 # Ceci est un commentaire pour la fin de mon fichier flask_app.py dans la branch dev
+@app.route("/confirmation", methods=["POST"])
+def confirmation():
+    """
+    Page de confirmation et de paiement de la commande
+    """
+    return render_template("confirmation.html")
 
 
 if __name__ == "__main__":
