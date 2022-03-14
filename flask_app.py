@@ -2,11 +2,11 @@
 
 from flask import Flask, render_template, request
 from chiffrement import charge_fichier_mtp, est_dans_db, crypte_mtp, sauvegarde_mtp
+from chiffrement import KEY as MASTER_KEY
 import os
 
 app = Flask(__name__)
 NOM_BD = "bd.test.tsv"
-MASTER_KEY = "lRAufiLOsaycti5e2XHecZeqEj00H6kcCm_yQdqcSH4="
 
 
 @app.route("/admin", methods=["GET", "POST"])
