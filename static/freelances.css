@@ -1,0 +1,35 @@
+body {
+    display:grid;
+    background:LightGray;
+    grid-template-columns: 5fr 1fr;
+    grid-template-areas: "main sidebar";
+    grid-gap:10px
+             
+}
+.carte{
+    border: darkgray solid 2px;
+margin: 10px;
+padding: 10px;
+margin-top: 10px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px grey;
+}
+.cartes {
+    background:lightblue;
+    grid-area: main;
+    grid-template-columns: 1fr 1fr 1fr;
+    display:grid;
+}
+
+#panier {
+    grid-area:sidebar;
+    background:coral;          
+}
+
+.fr-img{
+    width:80%;
+   border-radius:50%;
+    border: gold 5px solid;}
+
+
+

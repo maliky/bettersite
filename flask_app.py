@@ -47,24 +47,23 @@ def login():
     mtp = request.form["mtp"]
     nv_client = {"nom": nom, "mtp": mtp}
 
-    if  est_dans_db(nv_client, nom_fichier=NOM_BD, key=MASTER_KEY):
+    if est_dans_db(nv_client, nom_fichier=NOM_BD, key=MASTER_KEY):
         pass
     else:
         return render_template(
-            "login.html", message=f"Utilisateur {nom} ou mot de passe {mtp}, réessayer !"
+            "login.html",
+            message=f"Utilisateur {nom} ou mot de passe {mtp}, réessayer !",
         )
 
-
-    with open("static/produits.json", mode="r") as f:
-        produits = load(f)
+    with open("static/freelances.json", mode="r") as f:
+        freelances = load(f)
 
     return render_template(
-        "produits.html",
-        produits=produits,
+        "freelances.html",
+        freelances=freelances,
     )
 
 
-# Ceci est un commentaire pour la fin de mon fichier flask_app.py dans la branch dev
 @app.route("/confirmation", methods=["POST"])
 def confirmation():
     """

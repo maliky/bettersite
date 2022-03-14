@@ -1,0 +1,32 @@
+<!doctype html>
+<!-- fichier dans bettersite/templates/admin.html  -->
+<html lang="fr">
+
+  <head>
+    <meta charset="utf-8">
+    <title>FreeLance Ivoires</title>
+    <link rel="stylesheet" href="static/freelances.css">
+  </head>
+
+  <body>
+    <section id="main">
+      <h1>Nos FreeLance Ivoires</h1>
+      <div  class="cartes">
+        {% for fr in freelances %}
+        <div id="fr-{{fr.id}}" class="carte">
+          <div  class="fr-entete">{{fr.nom}}</div>
+          <img class="fr-img" src="https://avatars2.githubusercontent.com/u/{{fr.id}}?s=360" alt="Image de {{fr.nom}}"/>
+          <div class="fr-descr">{{fr.description}}</div>
+          <div class="fr-prix">{{fr.prix}} USD/h</div>
+          <div id="sel-{{fr.id}}" class="selection"></div>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+    <section id="panier">
+      <div>Pas d'articles seletionnés</div>
+      <button>Commander</button>
+    </section>
+  </body>
+
+</html>
