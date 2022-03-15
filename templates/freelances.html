@@ -13,18 +13,18 @@
       <h1>Nos FreeLance Ivoires</h1>
       <div  class="cartes">
         {% for fr in freelances %}
-        <div id="fr-{{fr.id}}" class="carte" onclick=test()>
+        <div id="fr-{{fr.id}}" class="carte">
           <div class="fr-nom">{{fr.nom}}</div>
           <img class="fr-img" src="https://avatars2.githubusercontent.com/u/{{fr.id}}?s=360" alt="Image de {{fr.nom}}"/>
           <div class="fr-desc">"{{fr.description}}"</div>
           <div class="fr-prix">{{fr.prix}} USD/h</div>
-          <div id="fr-sel-{{fr.id}}" class="selection"></div>
+          <div id="fr-sel-{{fr.id}}" class="fr-sel"></div>
         </div>
         {% endfor %}
       </div>
     </section>
     <section id="panier">
-      <div>Pas d'articles seletionnés</div>
+      <div>Pas d'articles sélectionnés</div>
       <button>Commander</button>
     </section>
   </body>
