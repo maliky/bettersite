@@ -1,4 +1,4 @@
-const cartes = document.querySelectorAll('.carte');
+const cartes = document.querySelectorAll('.cartes > div.carte');
 
 /*
    map est une façon plus claire et succinte de faire un boucle
@@ -13,23 +13,27 @@ cartes.forEach(rendre_interactive);
 
 // on ajoute sur chaque carte des events listener
 function rendre_interactive(carte) {
-    carte.addEventListener('mouseover', mettre_en_surbrillance);
-    carte.addEventListener('mouseout', supprimer_la_surbrillance);
+    carte.addEventListener('mouseenter', mettre_en_surbrillance);
+    carte.addEventListener('mouseleave', supprimer_la_surbrillance);
     carte.addEventListener('click', garder_la_surbrillance);
-    debugger;
+    /* debugger; */
 };
 
 // on définie les fonctions des events listener
 // https://developer.mozilla.org/en-US/docs/Web/Events
                
-function mettre_en_surbrillance(obj){
-                   debugger;
+function mettre_en_surbrillance(event){
+    let carte = event.currentTarget;
+    //    https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
+    carte.classList.add("souris-entree");
+    /* debugger; */
 }
 
-function supprimer_la_surbrillance(obj){
-    debugger;
+function supprimer_la_surbrillance(event){
+    let carte = event.currentTarget;    
+    carte.classList.remove("souris-entree");
 }
 
-function garder_la_surbrillance(obj){
-    debugger;
+function garder_la_surbrillance(event){
+    /* debugger; */
 }
