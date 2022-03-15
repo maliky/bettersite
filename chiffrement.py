@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from cryptography.fernet import Fernet
 
-# KEY = 'lRAufiLOsaycti5e2XHecZeqEj00H6kcCm_yQdqcSH4='
+KEY = 'lRAufiLOsaycti5e2XHecZeqEj00H6kcCm_yQdqcSH4='
 
 
 def décrypte_client(client: dict, key):
