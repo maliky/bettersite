@@ -9,19 +9,18 @@
     "id": 423,
     "nom": "Benelox",
     "description": "Ne vous fiez pas au apparence, c'est un maître du codage",
-    "prix": 1
+    "prix": 100
   },
   {
     "id": 5435,
     "nom": "Cigaroux",
     "description": "Efficace !",
-    "prix": 5
-  },
+    "prix": 50
   {
     "id": 241,
     "nom": "Deltoïd",
     "description": "Le socle !",
-    "prix": 6
+    "prix": 60
   },
   {
     "id": 634,
