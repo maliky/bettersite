@@ -1,37 +1,38 @@
 [
-  {
-    "id": 143,
-    "nom": "Astral",
-    "description": "C'est le meilleur",
-    "prix": 34
-  },
-  {
-    "id": 423,
-    "nom": "Benelox",
-    "description": "Ne vous fiez pas au apparence, c'est un maître du codage",
-    "prix": 100
-  },
-  {
-    "id": 5435,
-    "nom": "Cigaroux",
-    "description": "Efficace !",
-    "prix": 50
-  {
-    "id": 241,
-    "nom": "Deltoïd",
-    "description": "Le socle !",
-    "prix": 60
-  },
-  {
-    "id": 634,
-    "nom": "Exclamation",
-    "description": "Flexible, tout terrain, rapide comme l'éclaire et pas cher",
-    "prix": 324
-  },
-  {
-    "id": 91243,
-    "nom": "Filius",
-    "description": "Tradition de la perfection",
-    "prix": 93
-  }
+    {
+        "id": 143,
+        "nom": "Astral",
+        "description": "C'est le meilleur",
+        "prix": 34
+    },
+    {
+        "id": 423,
+        "nom": "Benelox",
+        "description": "Ne vous fiez pas aux apparences, c'est un maître du codage",
+        "prix": 100
+    },
+    {
+        "id": 5435,
+        "nom": "Cigaroux",
+        "description": "Efficace !",
+        "prix": 50
+    },
+    {
+        "id": 241,
+        "nom": "Deltoïd",
+        "description": "Le socle !",
+        "prix": 60
+    },
+    {
+        "id": 634,
+        "nom": "Exclamation",
+        "description": "Flexible, tout terrain, rapide comme l'éclair et pas cher",
+        "prix": 324
+    },
+    {
+        "id": 91243,
+        "nom": "Filius",
+        "description": "Tradition de la perfection",
+        "prix": 93
+    }
 ]
