@@ -6,8 +6,9 @@ from chiffrement import KEY as MASTER_KEY
 from json import load
 import os
 
+WEBROOT = "bettersite/"
 app = Flask(__name__)
-NOM_BD = "bd.test.tsv"
+NOM_BD = WEBROOT + "bd.test.tsv"
 
 
 @app.route("/admin", methods=["GET", "POST"])
@@ -55,7 +56,7 @@ def login():
             message=f"Utilisateur {nom} ou mot de passe {mtp}, réessayer !",
         )
 
-    with open("static/freelances.json", mode="r") as f:
+    with open(WEBROOT + "static/freelances.json", mode="r") as f:
         freelances = load(f)
 
     return render_template(
