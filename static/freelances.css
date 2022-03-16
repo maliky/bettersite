@@ -1,3 +1,7 @@
+/* 
+Voir freecodecamp -- responsive-web-design -- CSS Grid
+à https://www.freecodecamp.org/learn/responsive-web-design/
+*/
 body {
     display:grid;
     background:LightGray;
@@ -17,6 +21,7 @@ h1 {
     grid-gap: 5px;
 }
 
+
 .carte{
     background-color:lightgrey;
     border: darkgray solid 2px;
@@ -33,6 +38,10 @@ h1 {
         "prix selected";
     grid-gap:2px;
 }
+.souris-entree{
+     box-shadow: 15px 15px 10px gold;   
+}
+
 /*
 .carte > div{
     border: black 1px solid;
