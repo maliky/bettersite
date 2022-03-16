@@ -38,9 +38,6 @@ h1 {
         "prix selected";
     grid-gap:2px;
 }
-.souris-entree{
-     box-shadow: 15px 15px 10px gold;   
-}
 
 /*
 .carte > div{
@@ -73,6 +70,30 @@ h1 {
     font-family: 'arial';
     grid-area:prix;
 }
+
+/* Interactions */
+
+.souris-entree{
+    box-shadow: 15px 15px 10px gold;   
+}
+
+/* Exemple d'une  animation en CSS 
+voir https://developer.mozilla.org/fr/docs/Web/CSS/CSS_Animations/Using_CSS_animations
+*/
+@keyframes bouge {
+    from{ transform: rotate(0deg); }
+    25% { transform: rotate(-5deg); }
+    50% { transform: rotate(0deg); }
+    75% { transform: rotate(5deg); }
+    to {  transform: rotate(0deg); }
+}
+
+.anime-bouge {
+    animation-direction: alternate;
+    animation-duration:0.2s;
+    animation-fill-mode:backwards;
+    animation-iteration-count:infinite;
+    animation-name: bouge;
 }
 
 

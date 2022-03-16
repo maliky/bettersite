@@ -13,20 +13,24 @@ cartes.forEach(rendre_interactive);
 
 // on ajoute sur chaque carte des events listener
 function rendre_interactive(carte) {
+    /* 
+       Voir https://developer.mozilla.org/en-US/docs/Web/Events
+       pour les différents types d'évènement 
+     */
     carte.addEventListener('mouseenter', mettre_en_surbrillance);
     carte.addEventListener('mouseleave', supprimer_la_surbrillance);
-    carte.addEventListener('click', garder_la_surbrillance);
-    /* debugger; */
+    carte.addEventListener('mousedown', (e) => e.currentTarget.classList.add('anime-bouge') );
+    carte.addEventListener('mouseup', (e) => e.currentTarget.classList.remove('anime-bouge') );
+
 };
 
 // on définie les fonctions des events listener
-// https://developer.mozilla.org/en-US/docs/Web/Events
-               
+
+
 function mettre_en_surbrillance(event){
     let carte = event.currentTarget;
     //    https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
     carte.classList.add("souris-entree");
-    /* debugger; */
 }
 
 function supprimer_la_surbrillance(event){
@@ -35,5 +39,7 @@ function supprimer_la_surbrillance(event){
 }
 
 function garder_la_surbrillance(event){
+    let carte = event.currentTarget;        
+    carte.classList.add("anime-bouge");        
     /* debugger; */
 }
