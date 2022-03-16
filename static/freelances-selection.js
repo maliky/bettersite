@@ -32,7 +32,28 @@ function choisiFreelanceur(event){
 
     selCount[carteSelId] += 1;
     carteSel.textContent = selCount[carteSelId];
-//    debugger;
+
+    let btn = document.createElement('button');
+
+    btn.textContent = "-"
+    btn.id = carte.id + "-btn";
+    btn.style = "text-size: 14px; margin-left:5px;"
     
+    btn.addEventListener('click', reduireHeure);
+    carteSel.appendChild(btn)
+
 };
 
+
+function reduireHeure(event){
+    let bnt = event.currentTarget;
+    let carteSelId = "fr-" + bnt.id.split("-")[1] + "-sel";
+    let carteSel = document.querySelector("#" + carteSelId);
+
+    if (selCount[carteSelId] > 0){
+        selCount[carteSelId] -= 1;
+        carteSel.textContent = selCount[carteSelId];
+    }
+    event.stopPropagation();
+    carteSel.appendChild(btn)
+}
