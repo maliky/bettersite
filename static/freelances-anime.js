@@ -26,7 +26,6 @@ function rendre_interactive(carte) {
     */
     carte.addEventListener('mousedown', (e) => e.currentTarget.classList.add('anime-bouge') );
     carte.addEventListener('mouseup', (e) => e.currentTarget.classList.remove('anime-bouge') );
-
 };
 
 // On définie les fonctions des events listener
@@ -36,8 +35,9 @@ function mettre_en_surbrillance(event){
        Voir  https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
        pour le détail de classList
      */
-    let carte = event.currentTarget;
-    carte.classList.add("souris-entree");
+
+    let carte = event.currentTarget;  // origine de l'évènement
+    carte.classList.add("souris-entree");  // ajout de la classe
 }
 
 function supprimer_la_surbrillance(event){

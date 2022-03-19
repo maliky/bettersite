@@ -43,7 +43,7 @@ h1 {
 .carte > div{
     border: black 1px solid;
 }*/
-#panier {
+#team {
     grid-area:sidebar;
     background:coral;          
 }
@@ -94,6 +94,25 @@ voir https://developer.mozilla.org/fr/docs/Web/CSS/CSS_Animations/Using_CSS_anim
     animation-fill-mode:backwards;
     animation-iteration-count:infinite;
     animation-name: bouge;
+}
+
+
+
+/* Pour la selection des évèmenents */
+.fr-sel{
+    display:inline;
+    text-size: 14px;
+    padding:5px 10px 5px 10px;
+}
+.fr-sel > p{
+    float:left;
+    margin:0px;
+}
+button.sel{
+    float:right;
+    width:20px;
+    height:20px;
+    
 }
 
 
