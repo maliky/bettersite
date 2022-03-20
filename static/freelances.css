@@ -112,6 +112,15 @@ button.sel{
     float:right;
     width:20px;
     height:20px;
+}
+
+#team{
+    display:block;
+    padding-left: 1em;
+}
+
+#team div{
+    display:flow-root list-item;
     
 }
 
