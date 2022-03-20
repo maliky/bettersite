@@ -70,7 +70,45 @@ def confirmation():
     """
     Page de confirmation et de paiement de la commande
     """
-    return render_template("confirmation.html")
+    if request.method == "POST":
+        heures_freelance = get_fr(request.form)
+
+        with open(WEBROOT + "static/freelances.json", mode="r") as f:
+            fr_bd = load(f)
+
+        sousTotaux = {}
+        total = 0
+        for (fr_id, fr_heure) in heures_freelance.items():
+            fr_info = get_info(fr_id, fr_bd)
+            sous_total = int(fr_info["prix"]) * int(fr_heure)
+            sousTotaux[fr_id] = {
+                "nom": fr_info['nom'],
+                "detail": f"{fr_info['prix']} USD/h x {fr_heure}h",
+                "sous_total": f"{sous_total}USD",
+            }
+            total += sous_total
+        
+    return render_template("confirmation.html", factures={"sousTotaux":sousTotaux, "total":total})
+
+
+def get_info(fr_id, fr_bd):
+    def _sur_id(fr_el:dict):
+        return fr_el["id"] == int(fr_id.split("-")[1])
+
+    res = list(filter(_sur_id, fr_bd))[0]
+    return res
+
+
+def get_fr(fr_form_inputs: list):
+
+    fr_ids = {}
+
+    for (nonce, input_sel) in fr_form_inputs.items():
+        sel_id, input_value = input_sel.split(",")
+        fr_id = "-".join(sel_id.split("-")[:2])
+        fr_ids[fr_id] = int(input_value)
+
+    return fr_ids
 
 
 if __name__ == "__main__":

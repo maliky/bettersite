@@ -3,12 +3,30 @@
   <head>
     <meta charset="utf-8">
     <title>Confirmation</title>
+    <link href='https://fonts.googleapis.com/css?family=Rock+Salt' rel='stylesheet' type='text/css'>
+    <link href='static/table.css' rel='stylesheet' type='text/css'>
+    
   </head>
-
   <body>
     <section id="login">
       <div>
-        <h1>Paiement de votre commande</h1>
+        <h1>Confirmation et Paiement des services</h1>
+        <table>
+          <thead>
+            <th>Nom</th><th>Détail</th><th>Sous-total</th>
+          </thead>
+          <tbody>
+          {% for (id,st) in factures.sousTotaux.items() %}
+          <tr><td>{{st.nom}}</td><td>{{st.detail}}</td><td>{{st.sous_total}}</td></tr>
+          {% endfor %}
+          </tbody>
+          <tfoot>
+            <tr><th colspan="2">Total</th><th>{{factures.total}} USD</th></tr>
+          </tfoot>
+        </table>
+        <div><p>Adresse Cardano: addr1qx8da89wjt69nzna3gavjkg8uuc6gz28c6r8agufx7yvjlgma5ze2lecmfk4dgnahk53wh4esskn3zpk0u6dfjmncpks825350</p>
+          <button>Confirmer le paiement en Lovelace</button>
+          </div>
       </div>
     </section>
   </body>

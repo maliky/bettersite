@@ -1,0 +1,66 @@
+/* From https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Styling_tables */
+
+/* spacing */
+
+table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  border: 3px solid purple;
+}
+
+thead th:nth-child(1) {
+  width: 40%;
+}
+
+thead th:nth-child(2) {
+  width: 40%;
+}
+
+thead th:nth-child(3) {
+  width: 20%;
+}
+
+th, td {
+  padding: 20px;
+}
+
+
+/* typography */
+
+html {
+  font-family: 'helvetica neue', helvetica, arial, sans-serif;
+}
+
+thead th {
+font-family: 'Roboto', sans-serif;
+}
+
+th {
+  letter-spacing: 2px;
+}
+
+td {
+  letter-spacing: 1px;
+}
+
+tbody td {
+  text-align: center;
+}
+
+
+/* zebra striping */
+
+tbody tr:nth-child(odd) {
+    background-color: #DDD;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #AAA;
+}
+
+table {
+  background-color: #FFF;
+}
+
+
