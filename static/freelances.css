@@ -96,8 +96,6 @@ voir https://developer.mozilla.org/fr/docs/Web/CSS/CSS_Animations/Using_CSS_anim
     animation-name: bouge;
 }
 
-
-
 /* Pour la selection des évèmenents */
 .fr-sel{
     display:inline;

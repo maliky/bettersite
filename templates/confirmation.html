@@ -11,21 +11,27 @@
     <section id="login">
       <div>
         <h1>Confirmation et Paiement des services</h1>
+
         <table>
+
           <thead>
             <th>Nom</th><th>Détail</th><th>Sous-total</th>
           </thead>
+
           <tbody>
-          {% for (id,st) in factures.sousTotaux.items() %}
-          <tr><td>{{st.nom}}</td><td>{{st.detail}}</td><td>{{st.sous_total}}</td></tr>
+          {% for (ligne) in factures.lignes_tableau.values() %}
+          <tr><td>{{ligne.nom}}</td><td>{{ligne.detail}}</td><td>{{ligne.sous_total}}</td></tr>
           {% endfor %}
           </tbody>
+
           <tfoot>
             <tr><th colspan="2">Total</th><th>{{factures.total}} USD</th></tr>
           </tfoot>
+
         </table>
+
         <div><p>Adresse Cardano: addr1qx8da89wjt69nzna3gavjkg8uuc6gz28c6r8agufx7yvjlgma5ze2lecmfk4dgnahk53wh4esskn3zpk0u6dfjmncpks825350</p>
-          <button>Confirmer le paiement en Lovelace</button>
+          <button>Confirmer le paiement de {{factures.total}} USD (soit ₳ {{factures.total_ada}}) </button>
           </div>
       </div>
     </section>

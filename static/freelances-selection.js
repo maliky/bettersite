@@ -1,19 +1,19 @@
 /*
-   Attention se fichier est chargé après freelances-anime.js.  Il ne doit pas utiliser les
-   même nom de variable global
- */
+   Attention se fichier est chargé après freelances-anime.js.  Il ne doit pas utiliser les mêmes noms de variables globales.
 
+C'est pourquoi nous ne redéclarons pas 'cartes' ci-dessous
+ */
 cartes.forEach((carte) => carte.addEventListener('click', choisiFreeLanceur));
 
 
-// On initialise un objet javascript. Il se comporte (à peu prêt) comme un dictionnaire python
-// Il contiendra l'identifiant de freelanceur et le nombre d'heure qu'on souhaite lui donner.
+// On initialise un objet JavaScript  'selCount'. Il se comporte (à peu prêt) comme un dictionnaire python
+// Il contiendra l'identifiant d'un freelanceur et le nombre d'heures que l'on souhaite lui donner.
 const selCount = {} ; 
 
 for (let i =0 ; i< cartes.length; i++){
     /* Pour chaque carte on crée une entrée dans l'objet selCount
-       de la forme '12345-sel : 0'
-       Cet objet contient le nombre de clique sur chaque freelance
+       de la forme '12345 id-sel : un-nombre'
+       Cet objet contient le nombre de cliques pour chaque freelanceurs
      */
     let carteSelId = cartes[i].id + "-sel";
     selCount[carteSelId] = 0;
@@ -21,24 +21,25 @@ for (let i =0 ; i< cartes.length; i++){
 // ouvrir une console et écrire
 // console.log(selCount) pour voir le contenu
 
-
+// la fonction associé à l'évènement click sur une carte
 function choisiFreeLanceur(event){
     /*
-       Ajoute un compteur et un bouton dans la partie sel de la carte
+       Ajoute un compteur et un bouton dans la div.fr-sel de la carte
        où l'on a cliqué
      */
+    
     let carte = event.currentTarget;
     // crée l'id de la zone que l'on veut modifier
     let carteSelId = carte.id + "-sel";
-    // On incrémente le nombre de séléction pour cette zone
+    // On incrémente le nombre de selection de la carte
     selCount[carteSelId] += 1;
 
     // On récupère la DIV que l'on veut modifier
     let carteSel = document.querySelector("#" + carteSelId);
-    // On ajoute m-à-j le texte sur note page web 
+    // On ajoute ou m-à-j le texte sur note page web 
     majCpt(carteSel)
 
-    // On ajoute aussi un bouton si besoin
+    // On ajoute aussi un bouton s'il n'exite pas
     let btn = document.querySelector("#" + carte.id + "-btn");
     if  (!btn) {
         let btn_de_reduction = creeBoutonReduction(carte);
@@ -61,7 +62,7 @@ function majCpt(carteSel){
 
 function creeBoutonReduction(carte){
     /* 
-       Crée un bouton de réducation dans la zone de selection
+       Crée un bouton de réduction dans la zone de selection
        de la carte s'il n'existe pas déjà
      */
 
@@ -76,13 +77,18 @@ function creeBoutonReduction(carte){
 }
 
 function reduireH(event){
-    // Décrémente le nombre d'h de la carte associée au bouton
-    let btn = event.currentTarget;  // on récupère le bouton
-    let carteSelId = `fr-${btn.id.split("-")[1]}-sel`;  // notation proche de python pour créer une chaine de caractère (attention au back-tick)
-    
-    let p = document.querySelector(`#${carteSelId}> p`);  // on récupère le p fils de carteSelID
+    /*
+       Réduit le nombre d'heure
+     */
 
-    // On décrémente le nombre de selection 
+    let btn = event.currentTarget;  // on récupère le bouton
+    let carteSelId = `fr-${btn.id.split("-")[1]}-sel`;
+    // ci-dessus notation proche de python pour créer une chaine de caractère (attention aux back-tick ` != ' != " )
+    
+    let p = document.querySelector(`#${carteSelId}> p`);
+    // On récupère le fils p de div#carteSelID
+
+    // On réduit le nombre de sélection 
     if (selCount[carteSelId] > 0){
         selCount[carteSelId] -= 1;
         p.textContent = selCount[carteSelId] + " h";
@@ -97,31 +103,7 @@ function reduireH(event){
  **/
 
 cartes.forEach((carte) => carte.addEventListener('click', majDelaTeam));
-
 let team = document.querySelector("#team");  // renvoie la section team
-/* let teamForm = team.querySelector("form"); */
-/* let teamSubmit = teamForm.querySelector("input[type=submit]"); */
-let teamSubmit = team.querySelector("button");
-teamSubmit.addEventListener("mousedown", peuplerFormulaire);
-
-function peuplerFormulaire(event) {
-
-    // on filtre pour ne garder que les cartes ayant été choisi au moins un fois
-    let teamMembers = Object.entries(selCount).filter(ar => ar[1] > 0);
-    post("confirmation", teamMembers, method="post");
-    // Créons la structure du formulaire avec un select
-
-    // Ajoutons des input hidden pour chaque freelanceur selectionné et avec le nombre d'heures
-
-//    for (let i = 0; i< teamMembers.length; i++){
-//	var frSelId = teamMembers[i][0];
-//	var frSelVal = teamMembers[i][1];	
-	/* var frId = frSelId.split("-").slice(0,2).join("-"); */
-//        var input_html = `<input type="hidden" name=${frId}-qt value=${frSelVal}>)`;
-//        teamSubmit.insertAdjacentHTML("beforebegin", input_html); // https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentElement
-//    }
-}
-
 
 function majDelaTeam(event){
     /*
@@ -150,53 +132,34 @@ function majDelaTeam(event){
 
 }
 
-// au click du bouton générer un formulaire préremplie en the fly et l'envoyer à flask
+/*** Gestion du bouton ***/
 
-/**
- * this is copied from https://stackoverflow.com/questions/133925/javascript-post-request-like-a-form-submit?noredirect=1&lq=1
- * sends a request to the specified url from a form. this will change the window location.
- * @param {string} path the path to send the post request to
- * @param {object} params the parameters to add to the url
- * @param {string} [method=post] the method to use on the form
- */
-function post(path, params, method='post') {
+let teamButton = team.querySelector("button");
+teamButton.addEventListener("mousedown", peuplerFormulaire);
 
-    // The rest of this code assumes you are not using a library.
-    // It can be made less verbose if you use one.
+function peuplerFormulaire(event) {
+    /*
+https://stackoverflow.com/questions/133925/javascript-post-request-like-a-form-submit?noredirect=1&lq=1
+*/
+
+    // on filtre pour ne garder que les cartes ayant été choisies au moins une fois
+    let teamMembers = Object.entries(selCount).filter(ar => ar[1] > 0);
+
+    // On crée un formulaire avec les teamMembers
     const form = document.createElement('form');
-  form.method = method;
-  form.action = path;
-
-  for (const key in params) {
-    if (params.hasOwnProperty(key)) {
-      const hiddenField = document.createElement('input');
-      hiddenField.type = 'hidden';
-      hiddenField.name = key;
-      hiddenField.value = params[key];
-
-      form.appendChild(hiddenField);
+    form.method = "post";
+    form.action = "confirmation";
+    for (const tmId in teamMembers) {
+        const hiddenField = document.createElement('input');
+        hiddenField.type = 'hidden';
+        hiddenField.name = tmId;
+        hiddenField.value = teamMembers[tmId];
+        form.appendChild(hiddenField);
     }
-  }
 
-  document.body.appendChild(form);
-  form.submit();
+    // on ajoute le formulaire à notre page et on le soumet
+    document.body.appendChild(form);
+    form.submit();
 }
 
 
-
-/** utilitaires **/
-
-
-
-/**
- * html 2 dom fragment
- * @param {string} html
- * @returns {object}  renvoie un morceau de DOM.
-https://stackoverflow.com/questions/494143/creating-a-new-dom-element-from-an-html-string-using-built-in-dom-methods-or-pro
- */
-function html2domFrag(html) {
-    var template = document.createElement('template');
-    html = html.trim();
-    template.innerHTML = html;
-    return template.content.firstChild;
-}
